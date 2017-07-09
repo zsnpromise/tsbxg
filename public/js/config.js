@@ -1,0 +1,17 @@
+ requirejs.config({
+      baseUrl:'/public/assets',
+      paths:{
+        jquery:'jquery/jquery.min',
+        template:'artTemplate/template-web',
+        common:'../js/common',
+        login:'../js/login',
+        cookie:'jquery-cookie/jquery.cookie',
+        teacher_list:'../js/teacher_list',
+        bootstrap:"bootstrap/js/bootstrap",
+      },
+      shim:{
+          bootstrap:{
+              deps:['jquery']
+          }
+      }
+  })

@@ -8,12 +8,12 @@
     if(count($pathArr)===2){
         $pathName=$pathArr[0];
         $fileName=$pathArr[1];
-    }else{
+    }
+    else{
         $fileName="login";
     }
     // var_dump($pathArr) ;
-  }else{
-    
   }
+  
   include './views/'.$pathName.'/'.$fileName.'.html';
 ?>
