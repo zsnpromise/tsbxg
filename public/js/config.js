@@ -3,15 +3,27 @@
       paths:{
         jquery:'jquery/jquery.min',
         template:'artTemplate/template-web',
-        common:'../js/common',
-        login:'../js/login',
         cookie:'jquery-cookie/jquery.cookie',
-        teacher_list:'../js/teacher_list',
         bootstrap:"bootstrap/js/bootstrap",
+        bootstrap_date:'bootstrap-datepicker/js/bootstrap-datepicker.min',
+        bootstrap_date_zh:'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        form:'jquery-form/jquery.form',
+        validate:'validate/jquery-validate.min',
+        common:'../js/common',
+        util:'../js/util',
+        login:'../js/login',
+        teacher_list:'../js/teacher_list',
+        teacher_edit:'../js/teacher_edit'      
       },
       shim:{
           bootstrap:{
               deps:['jquery']
-          }
+          },
+          bootstrap_date_zh:{
+              deps:['jquery','bootstrap_date']
+          },
+          validate:{
+              deps:['jquery']
+          },
       }
   })

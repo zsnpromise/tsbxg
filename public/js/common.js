@@ -2,7 +2,7 @@
 // NProgress.start();
 
 // NProgress.done();
-define(["jquery","template", "cookie"], function ($,template) {
+define(["jquery", "template", "cookie"], function ($, template) {
 
 	//判断登陆
 	if (!$.cookie("userInfo") && location.pathname != "/login" && location.pathname != "/index/login") {
@@ -10,13 +10,13 @@ define(["jquery","template", "cookie"], function ($,template) {
 	}
 	//console.dir($.cookie("userInfo"));
 	//更新头像
-    var userLogo='<div class="avatar img-circle">'
-            +'<img src="{{tc_avatar}}">'
-        +'</div>'
-        +'<h4>{{tc_name}}</h4>';
+	var userLogo = '<div class="avatar img-circle">'
+		+ '<img src="{{tc_avatar}}">'
+		+ '</div>'
+		+ '<h4>{{tc_name}}</h4>';
 	var userInfo = $.cookie("userInfo");
-    var html= template.render(userLogo, userInfo?JSON.parse(userInfo).result:{});
-    $("#userLogo").html(html);
+	var html = template.render(userLogo, userInfo ? JSON.parse(userInfo).result : {});
+	$("#userLogo").html(html);
 
 	$('.navs ul').prev('a').on('click', function () {
 		$(this).next().slideToggle();
@@ -37,6 +37,22 @@ define(["jquery","template", "cookie"], function ($,template) {
 		})
 		return false
 	});
+	//侧边栏选中
+	var path = location.pathname.match(/\/\w+\//);
+	if (path && path[0]) {
+		var domArr = $(".navs .list-unstyled a");
+		for (var i = 0; i < domArr.length; i++) {
+			if (domArr[i].href.indexOf(path[0]) != -1) {
+				$(domArr[i]).addClass("active");
+				if($(".active").parent().parent().css("display")=="none"){
+					$(".active").parent().parent().css("display","block");
+				}
+                break;
+			}
+		}
 
+	} else {
+		$(".navs .list-unstyled a").eq(0).addClass("active");
+	}
 
 })
