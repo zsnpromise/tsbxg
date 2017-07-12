@@ -38,18 +38,30 @@ define(["jquery", "template", "cookie"], function ($, template) {
 		return false
 	});
 	//侧边栏选中
-	var path = location.pathname.match(/\/\w+\//);
-	if (path && path[0]) {
-		var domArr = $(".navs .list-unstyled a");
+	var path = location.pathname.match(/\/(\w+)\/(\w+)/);
+	if (path && path[1]&&path[1]!="index") {
+		var domArr = $(".navs .list-unstyled a"), arrChile = [];
 		for (var i = 0; i < domArr.length; i++) {
-			if (domArr[i].href.indexOf(path[0]) != -1) {
-				$(domArr[i]).addClass("active");
-				if($(".active").parent().parent().css("display")=="none"){
-					$(".active").parent().parent().css("display","block");
-				}
-                break;
+
+			if (domArr[i].href.indexOf(path[1]) != -1) {
+				arrChile.push(domArr[i])
+
 			}
 		}
+		if (arrChile.length == 1) {
+			$(arrChile[0]).addClass("active");
+		} else {
+			for (var i = 0; i < arrChile.length; i++) {
+				if (arrChile[i].href.indexOf(path[2]) != -1) {
+					$(arrChile[i]).addClass("active");
+					if ($(".active").parent().parent().css("display") == "none") {
+						$(".active").parent().parent().css("display", "block");
+					}
+					break;
+				}
+			}
+		}
+
 
 	} else {
 		$(".navs .list-unstyled a").eq(0).addClass("active");
