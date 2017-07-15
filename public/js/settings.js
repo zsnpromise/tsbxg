@@ -18,6 +18,7 @@ define(['jquery', 'template', 'ckeditor', 'region', 'uploadify', 'validate',
                     uploader: '/api/uploader/avatar',  //指定服务器端上传处理文件
                     onUploadSuccess: function (a, b, c) {
                         console.dir(b);
+                        b=JSON.parse(b);
                         $(".settings img").attr("src", b.result.path);
                     }
                 });

@@ -12,13 +12,21 @@ requirejs.config({
         uploadify:'uploadify/jquery.uploadify.min',
         ckeditor:'ckeditor/ckeditor',
         region:'jquery-region/jquery.region',
+        nprogress:"nprogress/nprogress",
+        jcrop:'jcrop/js/Jcrop',
         common: '../js/common',
         util: '../js/util',
         login: '../js/login',
         teacher_list: '../js/teacher_list',
         teacher_edit: '../js/teacher_edit',
         settings: '../js/settings',
+        course_list:'../js/course_list',
+        course_add:"../js/course_add",
+        course_add_step1:'../js/course_add_step1',
+        course_add_step2:'../js/course_add_step2',
+        course_add_step3:'../js/course_add_step3',
         
+       
     },
     shim: {
         bootstrap: {
@@ -35,6 +43,9 @@ requirejs.config({
         },
         ckeditor:{
             exports :"CKEDITOR"
-        }  
+        }  ,
+        jcrop:{
+             deps: ['jquery']
+        }
     }
 })

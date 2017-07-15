@@ -2,7 +2,7 @@
 // NProgress.start();
 
 // NProgress.done();
-define(["jquery", "template", "cookie"], function ($, template) {
+define(["jquery", "template","nprogress", "cookie"], function ($, template,NProgress) {
 
 	//判断登陆
 	if (!$.cookie("userInfo") && location.pathname != "/login" && location.pathname != "/index/login") {
@@ -39,7 +39,7 @@ define(["jquery", "template", "cookie"], function ($, template) {
 	});
 	//侧边栏选中
 	var path = location.pathname.match(/\/(\w+)\/(\w+)/);
-	if (path && path[1]&&path[1]!="index") {
+	if (path && path[1] && path[1] != "index") {
 		var domArr = $(".navs .list-unstyled a"), arrChile = [];
 		for (var i = 0; i < domArr.length; i++) {
 
@@ -67,4 +67,21 @@ define(["jquery", "template", "cookie"], function ($, template) {
 		$(".navs .list-unstyled a").eq(0).addClass("active");
 	}
 
+
+
+	//NProgress.set(0);
+
+	NProgress.start();
+
+	NProgress.done();
+
+	  // 处理遮罩效果
+  $(document).ajaxStart(function(){
+    $('.overlay').show();
+  });
+  $(document).ajaxStop(function(){
+    setTimeout(function(){
+      $('.overlay').hide();
+    },300);
+  });
 })

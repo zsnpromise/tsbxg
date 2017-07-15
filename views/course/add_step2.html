@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <?php include("/views/template/style.html") ?>
+    <link rel="stylesheet" href="/public/assets/jcrop/css/Jcrop.min.css">
+</head>
+
+<body>
+
+    <!-- 侧边栏 -->
+    <?php include("/views/template/aside.html") ?>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <?php include("/views/template/header.html") ?>
+            <div class="body course-add">
+                <!-- 面包屑 -->
+
+            </div>
+        </div>
+    </div>
+    <script type="text/template" id="infoTpl">
+
+          <form  id="cropInfo" style="display:none">
+               <input type="text" name="cs_id" value="{{cs_id}}">
+               <input type="text" name="x">
+               <input type="text" name="y">
+               <input type="text" name="w">
+               <input type="text" name="h">
+          </form>
+
+
+        <ol class="breadcrumb">
+            <li><a href="javascript:;">课程管理</a></li>
+            <li class="active">课程添加</li>
+        </ol>
+        <div class="steps">
+            <!-- 摘要 -->
+            <div class="brief">
+                <div class="thumb">
+                    {{if cs_cover}}
+                    <img  src="{{cs_cover}}" alt=""> {{else}}
+                    <img src="/uploads/course.png" alt=""> {{/if}}
+                </div>
+                <dl class="info">
+                    <dt>{{cs_tags}}</dt>
+                    <dd>讲师：{{cs_name}}</dd>
+                    <dd>课时：32</dd>
+                </dl>
+            </div>
+            <!-- 步聚 -->
+            <ul class="forwards list-unstyled">
+                <li>
+                    <a href="/course/add_step1?cs_id={{cs_id}}" class="done">
+                            <b class="fa fa-check"></b>
+                            基本信息
+                            </a>
+                </li>
+                <li>
+                    <a href="/course/add_step2?cs_id={{cs_id}}" class="active">
+                            <b>2</b>
+                            课程图片
+                            </a>
+                </li>
+                <li>
+                    <a href="/course/add_step3?cs_id={{cs_id}}">
+                            <b>3</b>
+                            课时管理
+                            </a>
+                </li>
+            </ul>
+            <!-- 课程图片 -->
+            <div class="content">
+                <!-- 标题 -->
+                <div class="title">
+                    <h5>课程图片 <small>COURSE PICTURE</small></h5>
+                </div>
+                <!-- 上传图片 -->
+                <div class="picture col-xs-offset-2">
+                    <div class="preview">
+                        {{if cs_cover}}
+                        <img crossOrigin="anonymous"  src="{{cs_cover}}" alt=""> {{else}}
+                        <img crossOrigin="anonymous"  src="/uploads/course.png" alt=""> {{/if}}
+                    </div>
+                    <p class="tips">
+                        可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
+                    </p>
+                    <div class="col-xs-4">
+                        <!--<a href="./course_add_step3.html" >选择图片</a>-->
+                        <input type="file" id="upfile" class="btn btn-success btn-sm" value="选择图片">
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="javascript:;"  class="btn btn-warning btn-sm" >裁切图片</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <?php include("/views/template/script.html") ?>
+    <script>require(['course_add_step2'])</script>
+</body>
+
+</html>
